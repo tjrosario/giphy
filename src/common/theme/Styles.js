@@ -28,6 +28,10 @@ const styles = {
     fontSize: '16px',
     margin: '20px 0'
   },
+  buttonProgress: {
+    margin: '0 0 0 25px',
+    verticalAlign: 'top',
+  },
   alert: {
     background: '#fcf8e3',
     color: '#8a6d3b',

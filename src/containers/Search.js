@@ -12,7 +12,8 @@ import {
   Icon,
   Typography,
   Container,
-  Slider
+  Slider,
+  CircularProgress
 } from '@material-ui/core';
 
 import {
@@ -92,6 +93,10 @@ class Search extends React.Component {
           <Button variant="contained" type="submit" disabled={loading} className={classes.searchButton}>
             Search
           </Button>
+
+          {loading ?
+            <CircularProgress className={classes.buttonProgress} />
+          : null}
         </form>
 
         {/* search result */}
