@@ -39,13 +39,21 @@ class Search extends React.Component {
     super(props);
 
     this.state = {
-      term: ''
+      term: '',
+      valid: true
     };
   }
 
   handleChange = (ev) => {
+    const term = event.target.value;
+
+    if (!term) {
+      this.setState({ valid: false });
+    }
+
     this.setState({
-      term: event.target.value,
+      term,
+      valid: true
     });    
   }
 
@@ -57,13 +65,19 @@ class Search extends React.Component {
   handleSubmit = (ev) => {
     if (ev) { ev.preventDefault(); }
 
+    if (!this.state.term) {
+      this.setState({ valid: false });
+      return false;
+    }
+
+    this.setState({ valid: true })
     this.props.fetchGiphy(this.state.term);
   }
 
   render() {
     const { giphy, classes } = this.props;
     const { result, loading, weirdness, error } = giphy;
-    const { term } = this.state;
+    const { term, valid } = this.state;
     const minLikes = LIKES.min;
 
     return (
@@ -89,6 +103,7 @@ class Search extends React.Component {
             }}
             onChange={this.handleChange}
             value={term}
+            error={!valid}
           />
           <Button variant="contained" type="submit" disabled={loading} className={classes.searchButton}>
             Search
@@ -126,6 +141,7 @@ class Search extends React.Component {
                 max={LIKES.weirdness.max}
                 onChange={this.handleSliderChange}
                 style={{margin:'20px 0'}}
+                disabled={!valid}
               />
 
               <Typography gutterBottom variant="body1" align="left">
