@@ -1,21 +1,24 @@
 import React from "react";
 
 import { 
-	ThemeProvider, 
-	withStyles 
+  ThemeProvider, 
+  withStyles 
 } from '@material-ui/styles';
 
 import { 
-    Grid, 
-    Paper, 
-    Typography, 
-    Divider, 
-    Container, 
-    CssBaseline 
+  Grid, 
+  Paper, 
+  Typography, 
+  Divider, 
+  Container, 
+  CssBaseline 
 } from '@material-ui/core';
 
 import theme from './common/theme/DefaultTheme';
 import styles from './common/theme/Styles';
+
+import Search from './containers/Search';
+import LikesList from './containers/LikesList';
 
 class App extends React.Component {
   render() {
@@ -27,19 +30,23 @@ class App extends React.Component {
 
         <Container maxWidth="lg">
 
-        	<Paper className={classes.paper}>
+          <Typography gutterBottom variant="h1" component="h1">
+            Weirdness Calculator
+          </Typography>
 
-        		<Grid container spacing={3} justify="center">
-        			<Grid item sm={8}>
-        				col a
-        			</Grid>
+          <Paper className={classes.paper}>
 
-        			<Grid item sm={4}>
-        				col b
-        			</Grid>
-        		</Grid>
+            <Grid container spacing={3} justify="center">
+              <Grid item sm={7}>
+                <Search />
+              </Grid>
 
-        	</Paper>
+              <Grid item sm={5}>
+                <LikesList />
+              </Grid>
+            </Grid>
+
+          </Paper>
 
         </Container>
       </ThemeProvider>
