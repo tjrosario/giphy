@@ -19,7 +19,6 @@ function receiveGiphy(result) {
   return {
     type: RECEIVE_GIPHY,
     result,
-    loading: false,
     lastUpdated: Date.now()
   };
 }
