@@ -1,6 +1,7 @@
 import {
   ADD_LIKE,
-  REMOVE_LIKE
+  REMOVE_LIKE,
+  START_OVER
 } from "../actionTypes";
 
 
@@ -31,6 +32,12 @@ const likes = (state = defaultState(), action) => {
         ...state,
         collection: state.collection.filter(like => action.like !== like)
       };
+
+    case START_OVER:
+      return {
+        ...state,
+        collection: []
+      }
 
     default:
       return state;

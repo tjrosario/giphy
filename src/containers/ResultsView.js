@@ -13,6 +13,8 @@ import {
   withStyles 
 } from '@material-ui/styles';
 
+import * as GiphyActionCreators from '../actions/giphy';
+
 import styles from '../common/theme/Styles';
 
 import LikesList from '../components/LikesList';
@@ -23,10 +25,15 @@ const mapStateToProps = state => ({
   likes: state.likes.collection
 });
 
-@connect(mapStateToProps)
+const mapDispatchToProps = dispatch => ({
+	startOver: () => dispatch(GiphyActionCreators.startOver())
+});
+
+@connect(mapStateToProps, mapDispatchToProps)
 class ResultsView extends React.Component {
 
 	handleStartOver = () => {
+		this.props.startOver();
 		this.props.history.push('/');
 	}
 

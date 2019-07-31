@@ -9,3 +9,4 @@ export const REMOVE_LIKE = "REMOVE_LIKE";
 
 // system
 export const USER_ERROR = "USER_ERROR";
+export const START_OVER = "START_OVER";

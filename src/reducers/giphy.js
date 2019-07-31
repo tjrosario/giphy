@@ -4,7 +4,8 @@ import {
   UPDATE_WEIRDNESS,
   USER_ERROR,
   ADD_LIKE,
-  REMOVE_LIKE
+  REMOVE_LIKE,
+  START_OVER
 } from "../actionTypes";
 
 
@@ -49,6 +50,11 @@ const giphy = (state = defaultState(), action) => {
       return Object.assign({}, state, {
         error: null
       });
+
+    case START_OVER:
+      return Object.assign({}, state, {
+        ...defaultState()
+      });      
 
     default:
       return state;

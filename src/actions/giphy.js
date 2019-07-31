@@ -5,7 +5,8 @@ import { GIPHY_API_KEY } from '../config/index';
 import {
 	REQUEST_GIPHY,
 	RECEIVE_GIPHY,
-	UPDATE_WEIRDNESS
+	UPDATE_WEIRDNESS,
+	START_OVER
 } from "../actionTypes";
 
 function requestGiphy(term) {
@@ -41,5 +42,11 @@ export function updateWeirdness(weirdness) {
 	return {
 		type: UPDATE_WEIRDNESS,
 		weirdness
+	};
+}
+
+export function startOver() {
+	return {
+		type: START_OVER
 	};
 }
