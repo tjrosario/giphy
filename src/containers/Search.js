@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as GiphyActionCreators from '../actions/giphy';
 import * as LikesActionCreators from '../actions/likes';
 
-import { MIN_NUMBER_LIKES as minLikes } from '../config/index';
+import { LIKES } from '../config/index';
 
 import {
   TextField,
@@ -63,6 +63,7 @@ class Search extends React.Component {
     const { giphy, classes } = this.props;
     const { result, loading, weirdness, error } = giphy;
     const { term } = this.state;
+    const minLikes = LIKES.min;
 
     return (
       <div>
@@ -116,8 +117,8 @@ class Search extends React.Component {
                 valueLabelDisplay="auto"
                 step={1}
                 marks
-                min={0}
-                max={10}
+                min={LIKES.weirdness.min}
+                max={LIKES.weirdness.max}
                 onChange={this.handleSliderChange}
                 style={{margin:'20px 0'}}
               />

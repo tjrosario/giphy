@@ -17,7 +17,7 @@ import styles from '../common/theme/Styles';
 
 import Search from '../containers/Search';
 import LikesList from '../components/LikesList';
-import { MIN_NUMBER_LIKES as minLikes } from '../config/index';
+import { LIKES } from '../config/index';
 
 import * as GiphyActionCreators from '../actions/giphy';
 import * as LikesActionCreators from '../actions/likes';
@@ -37,6 +37,7 @@ class IndexView extends React.Component {
 
 	render() {
 		const { likes, removeLike, classes } = this.props;
+		const minLikes = LIKES.min;
 		const canCalculate = likes.length === minLikes;
 
 		return (

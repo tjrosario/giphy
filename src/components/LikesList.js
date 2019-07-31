@@ -13,6 +13,8 @@ import {
 
 import { makeStyles } from '@material-ui/core/styles';
 
+import { LIKES } from '../config/index';
+
 const useStyles = makeStyles(theme => ({
   gridItem: {
   	position: 'relative'
@@ -50,7 +52,7 @@ export default function LikesList({ likes, justify, colSpan, removeLike, showRat
 
 					{showRating ?
 					<Typography gutterBottom variant="body1" align="center">
-						{like.weirdness} / 10
+						{like.weirdness} / {LIKES.weirdness.max}
 					</Typography>
 					: null}
 
