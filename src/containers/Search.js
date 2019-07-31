@@ -32,6 +32,8 @@ const mapDispatchToProps = dispatch => ({
   addLike: like => dispatch(LikesActionCreators.addLike(like))
 });
 
+const WeirdnessSlider = withStyles(styles.slider)(Slider);
+
 @connect(mapStateToProps, mapDispatchToProps)
 class Search extends React.Component {
 
@@ -131,7 +133,7 @@ class Search extends React.Component {
                 <Icon className={`far fa-thumbs-up`} />
               </Button>
 
-              <Slider
+              <WeirdnessSlider
                 defaultValue={weirdness}
                 aria-labelledby="discrete-slider"
                 valueLabelDisplay="auto"
@@ -140,7 +142,6 @@ class Search extends React.Component {
                 min={LIKES.weirdness.min}
                 max={LIKES.weirdness.max}
                 onChange={this.handleSliderChange}
-                style={{margin:'20px 0'}}
                 disabled={!valid}
               />
 
