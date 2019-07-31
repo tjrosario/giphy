@@ -3,12 +3,20 @@ import {
   REMOVE_LIKE
 } from "../actionTypes";
 
-export const addLike = like => ({
-  type: ADD_LIKE,
-  like
-});
+export function addLike(like) {
+	return (dispatch, getState) => {
+		dispatch({
+			type: ADD_LIKE,
+			like,
+			weirdness: getState().giphy.weirdness
+		});
+	};
+}
 
-export const removeLike = like => ({
-  type: REMOVE_LIKE,
-  like
-});
+export function removelike(like) {
+	return {
+	  type: REMOVE_LIKE,
+	  like
+	};
+}
+
