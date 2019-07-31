@@ -107,7 +107,7 @@ class Search extends React.Component {
                 <img src={result.images.downsized_medium.url} className={classes.searchImage} />
               </div>
 
-              <Button variant="contained" color="primary" onClick={()=> this.props.addLike(result)}>
+              <Button variant="contained" color="primary" onClick={()=> this.props.addLike(result)} disabled={loading}>
                 <Icon className={`far fa-thumbs-up`} />
               </Button>
 
