@@ -63,9 +63,11 @@ class IndexView extends React.Component {
 			            Calculate My Weirdness Score
 			          </Button>
 
+			          {likes.length < minLikes ?
 								<Typography variant="body1" gutterBottom paragraph>
 									You must like {minLikes - likes.length} more GIF to calculate your score.
 								</Typography>
+								: null}
 		          </Container>
 
 			      </div>
