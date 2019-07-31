@@ -30,6 +30,8 @@ export default class Search extends React.Component {
 	render() {
 		const { likes, removeLike } = this.props;
 
+		const canCalculate = likes.length === minLikes;
+
 		return (
 			<div>
 				<Typography gutterBottom variant="h3" component="h3">
@@ -65,6 +67,10 @@ export default class Search extends React.Component {
 							</Grid>
 						)}
 						</Grid>
+
+	          <Button variant="contained" color="primary" disabled={!canCalculate}>
+	            Calculate My Weirdness Score
+	          </Button>
 
 						<Typography variant="body1" gutterBottom paragraph>
 							You must like {minLikes - likes.length} more GIF to calculate your score.
