@@ -25,11 +25,14 @@ const useStyles = makeStyles(theme => ({
   	right: 0
   },
   image: {
-  	height: '100px'
+  	height: '155px'
+  },
+  rating: {
+  	margin: '10px 0 0'
   }
 }));
 
-export default function LikesList({ likes, justify, colSpan, removeLike, showRating }) {
+export default function LikesList({ likes, justify, colSpan, removeLike, showRating, imgClassName }) {
 	const classes = useStyles();
 
 	return (
@@ -45,13 +48,13 @@ export default function LikesList({ likes, justify, colSpan, removeLike, showRat
 	            <CardMedia
 	              image={like.images.downsized_large.url}
 	              title={like.title}
-	              className={classes.image}
+	              className={imgClassName || classes.image}
 	            />
 						</CardActionArea>
 					</Card>
 
 					{showRating ?
-					<Typography gutterBottom variant="body1" align="center">
+					<Typography gutterBottom variant="body1" align="center" className={classes.rating}>
 						{like.weirdness} / {LIKES.weirdness.max}
 					</Typography>
 					: null}

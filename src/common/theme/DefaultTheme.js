@@ -9,8 +9,7 @@ let theme = createMuiTheme({
     h1: {
       color: '#504d4d',
       fontSize: '2.4rem',
-      fontFamily: montserrat,
-      textTransform: 'uppercase'
+      fontFamily: montserrat
     },
     h2: {
       fontSize: '2.0rem',
@@ -26,7 +25,8 @@ let theme = createMuiTheme({
     h4: {
       color: '#666',
       fontSize: '1.1rem',
-      fontFamily: meriweather
+      fontFamily: meriweather,
+      margin: '0 0 20px'
     },
     h5: {
       fontSize: '1.2rem',

@@ -39,6 +39,9 @@ const styles = {
   alertIcon: {
     margin: '0 8px 0 0',
     verticalAlign: 'top'
+  },
+  imageResult: {
+    height: '200px'
   }
 };
 

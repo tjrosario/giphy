@@ -52,7 +52,7 @@ class ResultsView extends React.Component {
 						You scored a {this.getAverage(likes)} out of {LIKES.weirdness.max} on the weirdness scale!
 					</Typography>
 
-					<Typography gutterBottom variant="h4" component="h4" align="left">
+					<Typography variant="h4" component="h4" align="left">
 						The GIFs you liked
 					</Typography>
 
@@ -61,6 +61,7 @@ class ResultsView extends React.Component {
 		        likes={likes}
 		        justify={'center'}
 		        showRating={true}
+		        imgClassName={classes.imageResult}
 		      />
 		    </div>
 	      : null}
