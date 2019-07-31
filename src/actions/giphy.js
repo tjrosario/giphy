@@ -24,7 +24,7 @@ function receiveGiphy(result) {
   };
 }
 
-export function fetchGiphy(term, weirdness) {
+export function fetchGiphy(term) {
 	return (dispatch, getState) => {
 		if (getState().giphy.loading) { return false; }
 
