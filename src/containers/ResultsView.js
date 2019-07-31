@@ -17,6 +17,8 @@ import styles from '../common/theme/Styles';
 
 import LikesList from '../components/LikesList';
 
+import { LIKES } from '../config/index';
+
 const mapStateToProps = state => ({
   likes: state.likes.collection
 });
@@ -28,21 +30,40 @@ class ResultsView extends React.Component {
 		this.props.history.push('/');
 	}
 
+	getAverage = (likes) => {
+		const sum = likes
+		  .map(like => like.weirdness)
+		  .reduce((prev, curr) => prev + curr, 0);
+
+		const avg = sum / likes.length;
+
+		return Math.round(avg);
+	}
+
 	render() {
 		const { likes, classes } = this.props;
 
 		return (
 			<Container maxWidth="lg" align="center">
-				<Typography gutterBottom variant="h3" component="h3" align="left">
-					The GIFs you liked
-				</Typography>
 
-	      <LikesList 
-	        colSpan={2}
-	        likes={likes}
-	        justify={'center'}
-	        showRating={true}
-	      />
+				{likes.length > 0 ?
+				<div>
+					<Typography gutterBottom variant="h3" component="h3">
+						You scored a {this.getAverage(likes)} out of {LIKES.weirdness.max} on the weirdness scale!
+					</Typography>
+
+					<Typography gutterBottom variant="h4" component="h4" align="left">
+						The GIFs you liked
+					</Typography>
+
+		      <LikesList 
+		        colSpan={2}
+		        likes={likes}
+		        justify={'center'}
+		        showRating={true}
+		      />
+		    </div>
+	      : null}
 
         <Button variant="contained" color="primary" onClick={this.handleStartOver} className={classes.button}>
           Start Over
