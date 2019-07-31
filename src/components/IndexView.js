@@ -16,7 +16,10 @@ export default function ResultsView() {
       </Grid>
 
       <Grid item sm={5}>
-        <LikesList />
+        <LikesList 
+          header={'Your liked GIFs'}
+          colSpan={6}
+        />
       </Grid>
     </Grid>
 	);

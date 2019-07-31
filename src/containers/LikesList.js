@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import * as LikesActionCreators from '../actions/likes';
 import { MIN_NUMBER_LIKES as minLikes } from '../config/index';
@@ -25,24 +26,26 @@ const mapDispatchToProps = dispatch => ({
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class Search extends React.Component {
+class Search extends React.Component {
+
+	handleCalculate = () => this.props.history.push('/results')
 
 	render() {
-		const { likes, removeLike } = this.props;
+		const { likes, removeLike, header, colSpan, justify } = this.props;
 
 		const canCalculate = likes.length === minLikes;
 
 		return (
 			<div>
 				<Typography gutterBottom variant="h3" component="h3">
-					Your Liked Gifs
+					{header}
 				</Typography>
 
 				{likes.length > 0 ?
 					<div>
-						<Grid container spacing={3}>
+						<Grid container spacing={3} justify={justify || 'flex-start'}>
 						{likes.map(like =>
-							<Grid item sm={6} key={like.id}>
+							<Grid item sm={colSpan || 6} key={like.id}>
 								<Card>
 									<CardActionArea>
 										<CardContent>
@@ -68,7 +71,7 @@ export default class Search extends React.Component {
 						)}
 						</Grid>
 
-	          <Button variant="contained" color="primary" disabled={!canCalculate}>
+	          <Button variant="contained" color="primary" disabled={!canCalculate} onClick={this.handleCalculate}>
 	            Calculate My Weirdness Score
 	          </Button>
 
@@ -86,3 +89,5 @@ export default class Search extends React.Component {
 	}
 
 }
+
+export default withRouter(Search);
