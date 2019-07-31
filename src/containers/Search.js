@@ -53,8 +53,9 @@ export default class Search extends React.Component {
 
   render() {
     const { giphy } = this.props;
-    const { result, loading, weirdness } = giphy;
+    const { result, loading, weirdness, error } = giphy;
     const { term } = this.state;
+
 
     return (
       <div>
@@ -108,6 +109,13 @@ export default class Search extends React.Component {
               <Typography gutterBottom variant="body1" align="left">
                 Weirdness: {weirdness}
               </Typography>
+
+              {error ?
+                <div>
+                  <Icon className={`fas fa-exclamation-circle`} />
+                  {error}
+                </div>
+              : null}
             </div>
             : null}
           </div>
