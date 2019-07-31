@@ -5,11 +5,9 @@ import {
   withStyles 
 } from '@material-ui/styles';
 
-import { 
-  Grid, 
+import {  
   Paper, 
   Typography, 
-  Divider, 
   Container, 
   CssBaseline 
 } from '@material-ui/core';
@@ -17,8 +15,7 @@ import {
 import theme from './common/theme/DefaultTheme';
 import styles from './common/theme/Styles';
 
-import Search from './containers/Search';
-import LikesList from './containers/LikesList';
+import AppRouter from './AppRouter';
 
 class App extends React.Component {
   render() {
@@ -36,15 +33,7 @@ class App extends React.Component {
 
           <Paper className={classes.paper}>
 
-            <Grid container spacing={3} justify="center">
-              <Grid item sm={7}>
-                <Search />
-              </Grid>
-
-              <Grid item sm={5}>
-                <LikesList />
-              </Grid>
-            </Grid>
+            <AppRouter />
 
           </Paper>
 
