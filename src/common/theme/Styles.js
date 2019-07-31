@@ -4,33 +4,41 @@ const styles = {
   root: {
     flexGrow: 1,
   },
+  container: {
+    margin: '20px 0'
+  },
   paper: {
     padding: theme.spacing(3),
-    //textAlign: 'center',
-    //color: theme.palette.text.secondary,
   },
-  avatar: {
-    height: 100,
-    margin: '0 auto',
-    width: 100,
+  searchField: {
+    margin: '0 10px 0 0',
+    width: '50%',
   },
-  icon: {
-    //color: '##5995d8',
-    fontSize: '24px',
+  searchButton: {
+    fontSize: '14px',
+    height: '50px',
   },
-  section: {
-    margin: '0 0 40px'
+  searchImageWrap: {
+    height: '325px'
   },
-  subsection: {
-    margin: '0 0 30px'
+  searchImage: {
+    maxHeight: '300px'
   },
-  divider: {
-    margin: '50px auto',
-    width: '50%'
+  button: {
+    fontSize: '16px',
+    margin: '20px 0'
   },
-  badge: {
-    margin: '10px',
-    width: '50px'
+  alert: {
+    background: '#fcf8e3',
+    color: '#8a6d3b',
+    padding: '15px',
+    marginBottom: '20px',
+    border: '1px solid #faebcc',
+    borderRadius: '4px'
+  },
+  alertIcon: {
+    margin: '0 8px 0 0',
+    verticalAlign: 'top'
   }
 };
 

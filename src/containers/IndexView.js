@@ -5,8 +5,15 @@ import { withRouter } from 'react-router-dom';
 import { 
   Grid,
   Typography,
-  Button
+  Button,
+  Container
 } from '@material-ui/core';
+
+import {
+  withStyles 
+} from '@material-ui/styles';
+
+import styles from '../common/theme/Styles';
 
 import Search from '../containers/Search';
 import LikesList from '../components/LikesList';
@@ -29,7 +36,7 @@ class IndexView extends React.Component {
 	handleCalculate = () => this.props.history.push('/results')
 
 	render() {
-		const { likes, removeLike } = this.props;
+		const { likes, removeLike, classes } = this.props;
 		const canCalculate = likes.length === minLikes;
 
 		return (
@@ -51,13 +58,15 @@ class IndexView extends React.Component {
 			          removeLike={removeLike}
 			        />
 
-		          <Button variant="contained" color="primary" disabled={!canCalculate} onClick={this.handleCalculate}>
-		            Calculate My Weirdness Score
-		          </Button>
+			        <Container align="center">
+			          <Button variant="contained" color="primary" disabled={!canCalculate} onClick={this.handleCalculate} className={classes.button}>
+			            Calculate My Weirdness Score
+			          </Button>
 
-							<Typography variant="body1" gutterBottom paragraph>
-								You must like {minLikes - likes.length} more GIF to calculate your score.
-							</Typography>
+								<Typography variant="body1" gutterBottom paragraph>
+									You must like {minLikes - likes.length} more GIF to calculate your score.
+								</Typography>
+		          </Container>
 
 			      </div>
 		      :
@@ -72,4 +81,4 @@ class IndexView extends React.Component {
 	}
 }
 
-export default withRouter(IndexView);
+export default withRouter((withStyles(styles)(IndexView)))

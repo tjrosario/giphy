@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import * as GiphyActionCreators from '../actions/giphy';
 import * as LikesActionCreators from '../actions/likes';
 
+import { MIN_NUMBER_LIKES as minLikes } from '../config/index';
+
 import {
   TextField,
   Button,
@@ -12,6 +14,12 @@ import {
   Container,
   Slider
 } from '@material-ui/core';
+
+import {
+  withStyles 
+} from '@material-ui/styles';
+
+import styles from '../common/theme/Styles';
 
 const mapStateToProps = state => ({
   giphy: state.giphy
@@ -24,7 +32,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class Search extends React.Component {
+class Search extends React.Component {
 
   constructor(props) {
     super(props);
@@ -52,18 +60,25 @@ export default class Search extends React.Component {
   }
 
   render() {
-    const { giphy } = this.props;
+    const { giphy, classes } = this.props;
     const { result, loading, weirdness, error } = giphy;
     const { term } = this.state;
 
-
     return (
       <div>
+        <Typography variant="body2" align="left">
+          Find out how weird you are by selecting the GIFs that make you laugh.  We'll show you the least weird ones to start, but you can move the slider to make them weirder.
+        </Typography>
+
+        <Typography variant="body2" align="left">
+          When you find a GIF you like, press the <em>Like</em> button.  Once you like {minLikes} GIFs, we'll show you how weird you are.
+        </Typography>
+
         {/* search form */}
         <form onSubmit={this.handleSubmit}>
           <TextField
             label="Search Term"
-            style={{ margin: 8 }}
+            className={classes.searchField}
             placeholder="e.g - keyboard cat"
             margin="normal"
             variant="outlined"
@@ -73,22 +88,22 @@ export default class Search extends React.Component {
             onChange={this.handleChange}
             value={term}
           />
-          <Button variant="contained" type="submit" disabled={loading}>
+          <Button variant="contained" type="submit" disabled={loading} className={classes.searchButton}>
             Search
           </Button>
         </form>
 
         {/* search result */}
-        <Container maxWidth="lg" align="center" style={{minHeight:'400px'}}>
+        <Container maxWidth="lg" align="center">
           <div>
             {result && result.images ?
             <div>
-              <Typography gutterBottom variant="h2" component="h2" align="left">
+              <Typography gutterBottom variant="h3" component="h3" align="left">
                 Your Result
               </Typography>
               
-              <div>
-                <img src={result.images.downsized_medium.url} style={{maxHeight:'300px'}} />
+              <div className={classes.searchImageWrap}>
+                <img src={result.images.downsized_medium.url} className={classes.searchImage} />
               </div>
 
               <Button variant="contained" color="primary" onClick={()=> this.props.addLike(result, weirdness)}>
@@ -104,6 +119,7 @@ export default class Search extends React.Component {
                 min={0}
                 max={10}
                 onChange={this.handleSliderChange}
+                style={{margin:'20px 0'}}
               />
 
               <Typography gutterBottom variant="body1" align="left">
@@ -111,8 +127,8 @@ export default class Search extends React.Component {
               </Typography>
 
               {error ?
-                <div>
-                  <Icon className={`fas fa-exclamation-circle`} />
+                <div className={classes.alert}>
+                  <Icon className={`fas fa-exclamation-circle ${classes.alertIcon}`} />
                   {error}
                 </div>
               : null}
@@ -124,5 +140,6 @@ export default class Search extends React.Component {
       </div>
     );
   }
-
 }
+
+export default withStyles(styles)(Search);

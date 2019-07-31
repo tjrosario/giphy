@@ -11,33 +11,50 @@ import {
   Typography
 } from '@material-ui/core';
 
-export default function LikesList({ likes, justify, colSpan, removeLike }) {
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  gridItem: {
+  	position: 'relative'
+  },
+  iconButton: {
+  	position: 'absolute',
+  	top: 0,
+  	right: 0
+  },
+  image: {
+  	height: '100px'
+  }
+}));
+
+export default function LikesList({ likes, justify, colSpan, removeLike, showRating }) {
+	const classes = useStyles();
 
 	return (
 		<Grid container spacing={3} justify={justify || 'flex-start'}>
 			{likes.map(like =>
-				<Grid item sm={colSpan || 6} key={like.id}>
+				<Grid item sm={colSpan || 6} key={like.id} className={classes.gridItem}>
+					<Typography gutterBottom variant="body1" align="center">
+						{like.title}
+					</Typography>
+
 					<Card>
 						<CardActionArea>
-							<CardContent>
-	              <Typography gutterBottom variant="body1" align="center">
-	                {like.title}
-	              </Typography>
-							</CardContent>
-
 	            <CardMedia
 	              image={like.images.downsized_large.url}
 	              title={like.title}
-	              style={{height:'150px'}}
+	              className={classes.image}
 	            />
 						</CardActionArea>
-
-	          <CardActions>
-	            <IconButton className="fas fa-times" onClick={()=> removeLike(like)} />
-	          </CardActions>
-
 					</Card>
 
+					{showRating ?
+					<Typography gutterBottom variant="body1" align="center">
+						{like.weirdness} / 10
+					</Typography>
+					: null}
+
+					<IconButton className={`fas fa-times ${classes.iconButton}`} onClick={()=> removeLike(like)} />
 				</Grid>
 			)}
 		</Grid>

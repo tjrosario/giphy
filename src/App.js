@@ -25,7 +25,7 @@ class App extends React.Component {
       <ThemeProvider theme={theme}>
         <CssBaseline />
 
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" className={classes.container}>
 
           <Typography gutterBottom variant="h1" component="h1">
             Weirdness Calculator

@@ -9,6 +9,12 @@ import {
   Container
 } from '@material-ui/core';
 
+import {
+  withStyles 
+} from '@material-ui/styles';
+
+import styles from '../common/theme/Styles';
+
 import LikesList from '../components/LikesList';
 
 const mapStateToProps = state => ({
@@ -23,11 +29,11 @@ class ResultsView extends React.Component {
 	}
 
 	render() {
-		const { likes } = this.props;
+		const { likes, classes } = this.props;
 
 		return (
 			<Container maxWidth="lg" align="center">
-				<Typography gutterBottom variant="h2" component="h2" align="left">
+				<Typography gutterBottom variant="h3" component="h3" align="left">
 					The GIFs you liked
 				</Typography>
 
@@ -35,9 +41,10 @@ class ResultsView extends React.Component {
 	        colSpan={2}
 	        likes={likes}
 	        justify={'center'}
+	        showRating={true}
 	      />
 
-        <Button variant="contained" color="primary" onClick={this.handleStartOver}>
+        <Button variant="contained" color="primary" onClick={this.handleStartOver} className={classes.button}>
           Start Over
         </Button>
 			</Container>
@@ -45,4 +52,4 @@ class ResultsView extends React.Component {
 	}
 }
 
-export default withRouter(ResultsView);
+export default withRouter((withStyles(styles)(ResultsView)))

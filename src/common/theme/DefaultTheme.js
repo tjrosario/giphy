@@ -41,7 +41,8 @@ let theme = createMuiTheme({
       lineHeight: 1.6
     },
     body2: {
-      fontSize: '.8rem'
+      fontSize: '.8rem',
+      margin: '0 0 20px'
     },
     fontSize: 10,
     fontFamily: montserrat,
