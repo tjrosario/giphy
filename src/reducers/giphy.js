@@ -10,6 +10,7 @@ import {
 
 const defaultState = () => {
   return {
+    term: '',
     result: {},
     weirdness: 0,
     loading: false,
@@ -22,6 +23,7 @@ const giphy = (state = defaultState(), action) => {
   switch (action.type) {
     case REQUEST_GIPHY:
       return Object.assign({}, state, {
+        term: action.term,
         loading: true
       });
 

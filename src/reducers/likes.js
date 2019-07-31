@@ -18,7 +18,11 @@ const likes = (state = defaultState(), action) => {
         ...state,
         collection: [
           ...state.collection,
-          {...action.like, weirdness: action.weirdness}
+          {
+            ...action.like, 
+            weirdness: action.weirdness,
+            term: action.term
+          }
         ]
       };
 

@@ -35,7 +35,7 @@ export default function LikesList({ likes, justify, colSpan, removeLike, showRat
 			{likes.map(like =>
 				<Grid item sm={colSpan || 6} key={like.id} className={classes.gridItem}>
 					<Typography gutterBottom variant="body1" align="center">
-						{like.title}
+						{like.title || like.term}
 					</Typography>
 
 					<Card>

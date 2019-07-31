@@ -6,8 +6,10 @@ import {
 
 export function addLike(like) {
 	return (dispatch, getState) => {
+		const { likes, giphy } = getState();
+
 		// check for dups
-		const found = getState().likes.collection.some(item => item.id === like.id);
+		const found = likes.collection.some(item => item.id === like.id);
 		
 		if (found) {
 			dispatch({
@@ -20,7 +22,8 @@ export function addLike(like) {
 		dispatch({
 			type: ADD_LIKE,
 			like,
-			weirdness: getState().giphy.weirdness
+			weirdness: getState().giphy.weirdness,
+			term: giphy.term
 		});
 	};
 }
