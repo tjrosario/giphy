@@ -56,7 +56,9 @@ export default function LikesList({ likes, justify, colSpan, removeLike, showRat
 					</Typography>
 					: null}
 
+					{removeLike ?
 					<IconButton className={`fas fa-times ${classes.iconButton}`} onClick={()=> removeLike(like)} />
+					: null}
 				</Grid>
 			)}
 		</Grid>
