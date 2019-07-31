@@ -72,7 +72,7 @@ export default class Search extends React.Component {
             onChange={this.handleChange}
             value={term}
           />
-          <Button variant="contained" color="primary" type="submit" disabled={loading}>
+          <Button variant="contained" type="submit" disabled={loading}>
             Search
           </Button>
         </form>
