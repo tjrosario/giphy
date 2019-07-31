@@ -15,6 +15,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { LIKES } from '../config/index';
 
+import truncate from '../common/utils/truncate';
+
 const useStyles = makeStyles(theme => ({
   gridItem: {
   	position: 'relative'
@@ -40,7 +42,7 @@ export default function LikesList({ likes, justify, colSpan, removeLike, showRat
 			{likes.map(like =>
 				<Grid item sm={colSpan || 6} key={like.id} className={classes.gridItem}>
 					<Typography gutterBottom variant="body1" align="center">
-						{like.title || like.term}
+						{truncate(like.title, 20) || truncate(like.term, 20)}
 					</Typography>
 
 					<Card>
