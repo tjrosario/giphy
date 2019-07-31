@@ -13,7 +13,7 @@ export function addLike(like) {
 	};
 }
 
-export function removelike(like) {
+export function removeLike(like) {
 	return {
 	  type: REMOVE_LIKE,
 	  like
