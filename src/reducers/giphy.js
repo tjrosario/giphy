@@ -5,7 +5,8 @@ import {
   USER_ERROR,
   ADD_LIKE,
   REMOVE_LIKE,
-  START_OVER
+  START_OVER,
+  NO_RESULTS
 } from "../actionTypes";
 
 
@@ -55,7 +56,14 @@ const giphy = (state = defaultState(), action) => {
     case START_OVER:
       return Object.assign({}, state, {
         ...defaultState()
-      });      
+      }); 
+
+    case NO_RESULTS:
+      return Object.assign({}, state, {
+        error: action.msg,
+        loading: false,
+        result: null
+      });     
 
     default:
       return state;

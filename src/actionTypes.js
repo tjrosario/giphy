@@ -2,6 +2,7 @@
 export const REQUEST_GIPHY = "REQUEST_GIPHY";
 export const RECEIVE_GIPHY = "RECEIVE_GIPHY";
 export const UPDATE_WEIRDNESS = "UPDATE_WEIRDNESS";
+export const NO_RESULTS = "NO_RESULTS";
 
 // likes
 export const ADD_LIKE = "ADD_LIKE";
