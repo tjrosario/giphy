@@ -37,6 +37,8 @@ const useStyles = makeStyles(theme => ({
 export default function LikesList({ likes, justify, colSpan, removeLike, showRating, imgClassName }) {
 	const classes = useStyles();
 
+	const handleClick = (like) => window.open(like.bitly_url)
+
 	return (
 		<Grid container spacing={3} justify={justify || 'flex-start'}>
 			{likes.map(like =>
@@ -51,6 +53,7 @@ export default function LikesList({ likes, justify, colSpan, removeLike, showRat
 	              image={like.images.downsized_large.url}
 	              title={like.title}
 	              className={imgClassName || classes.image}
+	              onClick={()=> handleClick(like)}
 	            />
 						</CardActionArea>
 					</Card>
