@@ -32,56 +32,56 @@ const mapDispatchToProps = dispatch => ({
 
 @connect(mapStateToProps, mapDispatchToProps)
 class IndexView extends React.Component {
-	
-	handleCalculate = () => this.props.history.push('/results')
+  
+  handleCalculate = () => this.props.history.push('/results')
 
-	render() {
-		const { likes, removeLike, classes } = this.props;
-		const minLikes = LIKES.min;
-		const canCalculate = likes.length === minLikes;
+  render() {
+    const { likes, removeLike, classes } = this.props;
+    const minLikes = LIKES.min;
+    const canCalculate = likes.length === minLikes;
 
-		return (
-	    <Grid container spacing={3} justify="center">
-	      <Grid item sm={7}>
-	        <Search />
-	      </Grid>
+    return (
+      <Grid container spacing={3} justify="center">
+        <Grid item sm={7}>
+          <Search />
+        </Grid>
 
-	      <Grid item sm={5}>
-					<Typography gutterBottom variant="h3" component="h3">
-						Your Liked GIFs
-					</Typography>
+        <Grid item sm={5}>
+          <Typography gutterBottom variant="h3" component="h3">
+            Your Liked GIFs
+          </Typography>
 
-	      	{likes.length > 0 ?
-	      		<div>
-			        <LikesList 
-			          colSpan={6}
-			          likes={likes}
-			          removeLike={removeLike}
-			        />
+          {likes.length > 0 ?
+            <div>
+              <LikesList 
+                colSpan={6}
+                likes={likes}
+                removeLike={removeLike}
+              />
 
-			        <Container align="center">
-			          <Button variant="contained" color="primary" disabled={!canCalculate} onClick={this.handleCalculate} className={classes.button}>
-			            Calculate My Weirdness Score
-			          </Button>
+              <Container align="center">
+                <Button variant="contained" color="primary" disabled={!canCalculate} onClick={this.handleCalculate} className={classes.button}>
+                  Calculate My Weirdness Score
+                </Button>
 
-			          {likes.length < minLikes ?
-								<Typography variant="body1" gutterBottom paragraph>
-									You must <em>like</em> {minLikes - likes.length} more GIF to calculate your score.
-								</Typography>
-								: null}
-		          </Container>
+                {likes.length < minLikes ?
+                <Typography variant="body1" gutterBottom paragraph>
+                  You must <em>like</em> {minLikes - likes.length} more GIF to calculate your score.
+                </Typography>
+                : null}
+              </Container>
 
-			      </div>
-		      :
-						<Typography variant="body1" gutterBottom paragraph>
-							You haven't liked anything yet.
-						</Typography>
-					}
+            </div>
+          :
+            <Typography variant="body1" gutterBottom paragraph>
+              You haven't liked anything yet.
+            </Typography>
+          }
 
-	      </Grid>
-	    </Grid>
-		);
-	}
+        </Grid>
+      </Grid>
+    );
+  }
 }
 
 export default withRouter((withStyles(styles)(IndexView)))

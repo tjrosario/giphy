@@ -5,10 +5,10 @@ import IndexView from './containers/IndexView';
 import ResultsView from './containers/ResultsView';
 
 export default function AppRouter() {
-	return (
-		<Router>
-			<Route path="/" exact component={IndexView} />
-			<Route path='/results' component={ResultsView} />
-		</Router>
-	);
+  return (
+    <Router>
+      <Route path="/" exact component={IndexView} />
+      <Route path='/results' component={ResultsView} />
+    </Router>
+  );
 }

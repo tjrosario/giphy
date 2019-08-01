@@ -26,59 +26,59 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	startOver: () => dispatch(GiphyActionCreators.startOver())
+  startOver: () => dispatch(GiphyActionCreators.startOver())
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
 class ResultsView extends React.Component {
 
-	handleStartOver = () => {
-		this.props.startOver();
-		this.props.history.push('/');
-	}
+  handleStartOver = () => {
+    this.props.startOver();
+    this.props.history.push('/');
+  }
 
-	getAverage = (likes) => {
-		const sum = likes
-		  .map(like => like.weirdness)
-		  .reduce((prev, curr) => prev + curr, 0);
+  getAverage = (likes) => {
+    const sum = likes
+      .map(like => like.weirdness)
+      .reduce((prev, curr) => prev + curr, 0);
 
-		const avg = sum / likes.length;
+    const avg = sum / likes.length;
 
-		return Math.round(avg);
-	}
+    return Math.round(avg);
+  }
 
-	render() {
-		const { likes, classes } = this.props;
+  render() {
+    const { likes, classes } = this.props;
 
-		return (
-			<Container maxWidth="lg" align="center">
+    return (
+      <Container maxWidth="lg" align="center">
 
-				{likes.length > 0 ?
-				<div>
-					<Typography variant="h3" component="h3">
-						You scored a {this.getAverage(likes)} out of {LIKES.weirdness.max} on the weirdness scale!
-					</Typography>
+        {likes.length > 0 ?
+        <div>
+          <Typography variant="h3" component="h3">
+            You scored a {this.getAverage(likes)} out of {LIKES.weirdness.max} on the weirdness scale!
+          </Typography>
 
-					<Typography variant="h4" component="h4" align="left">
-						The GIFs you liked
-					</Typography>
+          <Typography variant="h4" component="h4" align="left">
+            The GIFs you liked
+          </Typography>
 
-		      <LikesList 
-		        colSpan={2}
-		        likes={likes}
-		        justify={'center'}
-		        showRating={true}
-		        imgClassName={classes.imageResult}
-		      />
-		    </div>
-	      : null}
+          <LikesList 
+            colSpan={2}
+            likes={likes}
+            justify={'center'}
+            showRating={true}
+            imgClassName={classes.imageResult}
+          />
+        </div>
+        : null}
 
         <Button variant="contained" color="primary" onClick={this.handleStartOver} className={classes.button}>
           Start Over
         </Button>
-			</Container>
-		);
-	}
+      </Container>
+    );
+  }
 }
 
 export default withRouter((withStyles(styles)(ResultsView)))

@@ -3,12 +3,12 @@ import fetch from 'cross-fetch';
 import { GIPHY_API_KEY } from '../config/index';
 
 import {
-	REQUEST_GIPHY,
-	RECEIVE_GIPHY,
-	UPDATE_WEIRDNESS,
-	START_OVER,
-	USER_ERROR,
-	NO_RESULTS
+  REQUEST_GIPHY,
+  RECEIVE_GIPHY,
+  UPDATE_WEIRDNESS,
+  START_OVER,
+  USER_ERROR,
+  NO_RESULTS
 } from "../actionTypes";
 
 function requestGiphy(term) {
@@ -19,12 +19,12 @@ function requestGiphy(term) {
 }
 
 function receiveGiphy(result) {
-	if (!result || !result.images) {
-		return {
-			type: NO_RESULTS,
-			msg: 'No results found.'
-		};
-	}
+  if (!result || !result.images) {
+    return {
+      type: NO_RESULTS,
+      msg: 'No results found.'
+    };
+  }
 
   return {
     type: RECEIVE_GIPHY,
@@ -34,28 +34,28 @@ function receiveGiphy(result) {
 }
 
 export function fetchGiphy(term) {
-	return (dispatch, getState) => {
-		if (getState().giphy.loading) { return false; }
+  return (dispatch, getState) => {
+    if (getState().giphy.loading) { return false; }
 
-		dispatch(requestGiphy(term));
+    dispatch(requestGiphy(term));
 
-		const { giphy } = getState();
+    const { giphy } = getState();
 
-		return fetch(`http://api.giphy.com/v1/gifs/translate?s=${term}&weirdness=${giphy.weirdness}&api_key=${GIPHY_API_KEY}`)
-			.then(response => response.json())
-			.then(json => dispatch(receiveGiphy(json.data)));
-	};
+    return fetch(`http://api.giphy.com/v1/gifs/translate?s=${term}&weirdness=${giphy.weirdness}&api_key=${GIPHY_API_KEY}`)
+      .then(response => response.json())
+      .then(json => dispatch(receiveGiphy(json.data)));
+  };
 }
 
 export function updateWeirdness(weirdness) {
-	return {
-		type: UPDATE_WEIRDNESS,
-		weirdness
-	};
+  return {
+    type: UPDATE_WEIRDNESS,
+    weirdness
+  };
 }
 
 export function startOver() {
-	return {
-		type: START_OVER
-	};
+  return {
+    type: START_OVER
+  };
 }

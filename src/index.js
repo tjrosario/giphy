@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
-const store = createStore(rootReducer, applyMiddleware(thunk));	
+const store = createStore(rootReducer, applyMiddleware(thunk)); 
 
 class Root extends React.Component {
   render() {

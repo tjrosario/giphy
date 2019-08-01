@@ -19,56 +19,56 @@ import truncate from '../common/utils/truncate';
 
 const useStyles = makeStyles(theme => ({
   gridItem: {
-  	position: 'relative'
+    position: 'relative'
   },
   iconButton: {
-  	position: 'absolute',
-  	top: 0,
-  	right: 0
+    position: 'absolute',
+    top: 0,
+    right: 0
   },
   image: {
-  	height: '155px'
+    height: '155px'
   },
   rating: {
-  	margin: '10px 0 0'
+    margin: '10px 0 0'
   }
 }));
 
 export default function LikesList({ likes, justify, colSpan, removeLike, showRating, imgClassName }) {
-	const classes = useStyles();
+  const classes = useStyles();
 
-	const handleClick = (like) => window.open(like.bitly_url)
+  const handleClick = (like) => window.open(like.bitly_url)
 
-	return (
-		<Grid container spacing={3} justify={justify || 'flex-start'}>
-			{likes.map(like =>
-				<Grid item xs={6} sm={colSpan || 6} key={like.id} className={classes.gridItem}>
-					<Typography gutterBottom variant="body1" align="center">
-						{truncate(like.title, 20) || truncate(like.term, 20)}
-					</Typography>
+  return (
+    <Grid container spacing={3} justify={justify || 'flex-start'}>
+      {likes.map(like =>
+        <Grid item xs={6} sm={colSpan || 6} key={like.id} className={classes.gridItem}>
+          <Typography gutterBottom variant="body1" align="center">
+            {truncate(like.title, 20) || truncate(like.term, 20)}
+          </Typography>
 
-					<Card>
-						<CardActionArea>
-	            <CardMedia
-	              image={like.images.downsized_large.url}
-	              title={like.title}
-	              className={imgClassName || classes.image}
-	              onClick={()=> handleClick(like)}
-	            />
-						</CardActionArea>
-					</Card>
+          <Card>
+            <CardActionArea>
+              <CardMedia
+                image={like.images.downsized_large.url}
+                title={like.title}
+                className={imgClassName || classes.image}
+                onClick={()=> handleClick(like)}
+              />
+            </CardActionArea>
+          </Card>
 
-					{showRating ?
-					<Typography gutterBottom variant="body1" align="center" className={classes.rating}>
-						{like.weirdness} / {LIKES.weirdness.max}
-					</Typography>
-					: null}
+          {showRating ?
+          <Typography gutterBottom variant="body1" align="center" className={classes.rating}>
+            {like.weirdness} / {LIKES.weirdness.max}
+          </Typography>
+          : null}
 
-					{removeLike ?
-					<IconButton className={`fas fa-times ${classes.iconButton}`} onClick={()=> removeLike(like)} />
-					: null}
-				</Grid>
-			)}
-		</Grid>
-	);
+          {removeLike ?
+          <IconButton className={`fas fa-times ${classes.iconButton}`} onClick={()=> removeLike(like)} />
+          : null}
+        </Grid>
+      )}
+    </Grid>
+  );
 }
