@@ -20,13 +20,13 @@ let theme = createMuiTheme({
       fontSize: '1.4rem',
       fontFamily: meriweather,
       lineHeight: '1.5',
-      marginTop: '20px'
+      margin: '20px 0'
     },
     h4: {
       color: '#666',
       fontSize: '1.1rem',
       fontFamily: meriweather,
-      margin: '0 0 20px'
+      margin: '20px 0'
     },
     h5: {
       fontSize: '1.2rem',

@@ -55,7 +55,7 @@ class ResultsView extends React.Component {
 
 				{likes.length > 0 ?
 				<div>
-					<Typography gutterBottom variant="h3" component="h3">
+					<Typography variant="h3" component="h3">
 						You scored a {this.getAverage(likes)} out of {LIKES.weirdness.max} on the weirdness scale!
 					</Typography>
 

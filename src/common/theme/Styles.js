@@ -25,7 +25,9 @@ const styles = {
     height: '325px'
   },
   searchImage: {
-    maxHeight: '300px'
+    maxHeight: '300px',
+    maxWidth: '100%',
+    width: 'auto'
   },
   button: {
     fontSize: '16px',

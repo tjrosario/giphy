@@ -40,7 +40,7 @@ export default function LikesList({ likes, justify, colSpan, removeLike, showRat
 	return (
 		<Grid container spacing={3} justify={justify || 'flex-start'}>
 			{likes.map(like =>
-				<Grid item sm={colSpan || 6} key={like.id} className={classes.gridItem}>
+				<Grid item xs={6} sm={colSpan || 6} key={like.id} className={classes.gridItem}>
 					<Typography gutterBottom variant="body1" align="center">
 						{truncate(like.title, 20) || truncate(like.term, 20)}
 					</Typography>
