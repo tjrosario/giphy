@@ -66,7 +66,7 @@ class IndexView extends React.Component {
 
 			          {likes.length < minLikes ?
 								<Typography variant="body1" gutterBottom paragraph>
-									You must like {minLikes - likes.length} more GIF to calculate your score.
+									You must <em>like</em> {minLikes - likes.length} more GIF to calculate your score.
 								</Typography>
 								: null}
 		          </Container>
