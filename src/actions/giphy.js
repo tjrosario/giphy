@@ -6,7 +6,8 @@ import {
 	REQUEST_GIPHY,
 	RECEIVE_GIPHY,
 	UPDATE_WEIRDNESS,
-	START_OVER
+	START_OVER,
+	USER_ERROR
 } from "../actionTypes";
 
 function requestGiphy(term) {
@@ -17,6 +18,13 @@ function requestGiphy(term) {
 }
 
 function receiveGiphy(result) {
+	if (!result || !result.images) {
+		return {
+			type: USER_ERROR,
+			msg: 'No results found.'
+		};
+	}
+
   return {
     type: RECEIVE_GIPHY,
     result,

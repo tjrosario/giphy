@@ -42,7 +42,8 @@ const giphy = (state = defaultState(), action) => {
 
     case USER_ERROR:
       return Object.assign({}, state, {
-        error: action.msg
+        error: action.msg,
+        loading: false
       });
 
     case ADD_LIKE:

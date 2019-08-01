@@ -39,9 +39,10 @@ const styles = {
     background: '#fcf8e3',
     color: '#8a6d3b',
     padding: '15px',
-    marginBottom: '20px',
+    margin: '20px 0',
     border: '1px solid #faebcc',
-    borderRadius: '4px'
+    borderRadius: '4px',
+    textAlign: 'center'
   },
   alertIcon: {
     margin: '0 8px 0 0',

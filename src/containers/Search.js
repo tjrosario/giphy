@@ -148,18 +148,18 @@ class Search extends React.Component {
               <Typography gutterBottom variant="body1" align="left">
                 Weirdness: {weirdness}
               </Typography>
-
-              {error ?
-                <div className={classes.alert}>
-                  <Icon className={`fas fa-exclamation-circle ${classes.alertIcon}`} />
-                  {error}
-                </div>
-              : null}
             </div>
             : null}
+
           </div>
         </Container>
         
+        {error ?
+          <div className={classes.alert}>
+            <Icon className={`fas fa-exclamation-circle ${classes.alertIcon}`} />
+            {error}
+          </div>
+        : null}
       </div>
     );
   }
