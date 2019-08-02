@@ -48,8 +48,8 @@ class Search extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.giphy.loading !== this.props.giphy.loading) {
-      this.setState({ imgLoading: nextProps.giphy.loading });
+    if (nextProps.giphy.error !== this.props.giphy.error) {
+      this.setState({ imgLoading: false });
     }
   }
 
