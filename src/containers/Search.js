@@ -47,6 +47,12 @@ class Search extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.giphy.loading !== this.props.giphy.loading) {
+      this.setState({ imgLoading: nextProps.giphy.loading });
+    }
+  }
+
   handleChange = (ev) => {
     const term = event.target.value;
 
