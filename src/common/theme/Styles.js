@@ -22,12 +22,20 @@ const styles = {
     height: '50px',
   },
   searchImageWrap: {
-    height: '325px'
+    height: '325px',
+    position: 'relative'
   },
   searchImage: {
     maxHeight: '300px',
     maxWidth: '100%',
-    width: 'auto'
+    width: 'auto',
+    transition: 'opacity .1s ease-out'
+  },
+  searchImageFaded: {
+    maxHeight: '300px',
+    maxWidth: '100%',
+    width: 'auto',
+    opacity: '.5'
   },
   button: {
     fontSize: '16px',

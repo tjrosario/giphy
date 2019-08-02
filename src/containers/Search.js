@@ -42,7 +42,8 @@ class Search extends React.Component {
 
     this.state = {
       term: '',
-      valid: true
+      valid: true,
+      imgLoading: false
     };
   }
 
@@ -72,15 +73,21 @@ class Search extends React.Component {
       return false;
     }
 
-    this.setState({ valid: true })
+    this.setState({ valid: true, imgLoading: true });
     this.props.fetchGiphy(this.state.term);
   }
+
+  handleImageLoaded = () => this.setState({ imgLoading: false })
+
+  handleImageError = () => this.setState({ imgLoading: false })
 
   render() {
     const { giphy, classes } = this.props;
     const { result, loading, weirdness, error } = giphy;
-    const { term, valid } = this.state;
+    const { term, valid, imgLoading } = this.state;
     const minLikes = LIKES.min;
+
+    const isLoading = loading || imgLoading;
 
     return (
       <div>
@@ -107,11 +114,11 @@ class Search extends React.Component {
             value={term}
             error={!valid}
           />
-          <Button variant="contained" type="submit" disabled={loading} className={classes.searchButton}>
+          <Button variant="contained" type="submit" disabled={isLoading} className={classes.searchButton}>
             Search
           </Button>
 
-          {loading ?
+          {isLoading ?
             <CircularProgress className={classes.buttonProgress} />
           : null}
         </form>
@@ -126,10 +133,15 @@ class Search extends React.Component {
               </Typography>
               
               <div className={classes.searchImageWrap}>
-                <img src={result.images.downsized_medium.url} className={classes.searchImage} />
+                <img 
+                  src={result.images.downsized_medium.url} 
+                  className={isLoading ? classes.searchImageFaded : classes.searchImage} 
+                  onLoad={this.handleImageLoaded.bind(this)}
+                  onError={this.handleImageError.bind(this)}
+                />
               </div>
 
-              <Button variant="contained" color="primary" onClick={()=> this.props.addLike(result)} disabled={loading}>
+              <Button variant="contained" color="primary" onClick={()=> this.props.addLike(result)} disabled={isLoading}>
                 <Icon className={`far fa-thumbs-up`} />
               </Button>
 
